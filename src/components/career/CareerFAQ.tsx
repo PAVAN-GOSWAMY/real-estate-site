@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { membershipFaq } from "@/data/membership";
+import { careerFaq } from "@/data/career";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function MembershipFAQ() {
+export function CareerFAQ() {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
   return (
@@ -16,12 +16,12 @@ export function MembershipFAQ() {
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground text-lg">
-            Everything you need to know about our membership plans.
+            Everything you need to know about our career plans.
           </p>
         </div>
 
         <div className="space-y-4">
-          {membershipFaq.map((faq, index) => {
+          {careerFaq.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div 

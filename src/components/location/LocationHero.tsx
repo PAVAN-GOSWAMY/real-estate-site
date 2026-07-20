@@ -9,7 +9,7 @@ interface LocationHeroProps {
 
 export function LocationHero({ location }: LocationHeroProps) {
   return (
-    <section className="relative pt-24 pb-12 overflow-hidden bg-accent/5">
+    <section className="relative pb-12 overflow-hidden bg-accent/5">
       <div className="container px-4 md:px-6 mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           

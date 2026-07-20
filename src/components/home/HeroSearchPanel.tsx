@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Search, MapPin, Home, IndianRupee } from "lucide-react";
+import { Search, MapPin, Home, IndianRupee, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -10,83 +10,104 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
+import { locations, propertyTypes, budgets, configurations } from "@/data/search";
 
 export function HeroSearchPanel() {
-  return (
-    <div className="bg-white rounded-xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-auto xl:ml-auto border border-border/50">
-      <div className="mb-6">
-        <h3 className="font-heading text-xl font-bold text-foreground">
-          Find Your Sanctuary
-        </h3>
-        <p className="text-sm text-muted-foreground mt-1">
-          Search exclusive properties in Noida
-        </p>
-      </div>
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Search initiated from Hero");
+  };
 
-      <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+  return (
+    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] p-4 md:p-6 w-full border border-white/20 relative z-20">
+      <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 items-end">
+        
         {/* Location Select */}
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+          <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 text-accent" /> Location
           </label>
-          <Select defaultValue="sector-150">
-            <SelectTrigger className="w-full bg-muted/50 border-input h-12 focus:ring-accent">
-              <SelectValue placeholder="Select Location" />
+          <Select>
+            <SelectTrigger className="w-full bg-muted/30 border-input h-14 text-base focus:ring-accent rounded-xl">
+              <SelectValue placeholder="All Locations" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="sector-150">Sector 150, Noida</SelectItem>
-              <SelectItem value="noida-extension">Noida Extension</SelectItem>
-              <SelectItem value="greater-noida-west">Greater Noida West</SelectItem>
-              <SelectItem value="yamuna-expressway">Yamuna Expressway</SelectItem>
+              {locations.map((loc) => (
+                <SelectItem key={loc.value} value={loc.value}>
+                  {loc.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
         {/* Property Type Select */}
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+          <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
             <Home className="w-3.5 h-3.5 text-accent" /> Property Type
           </label>
-          <Select defaultValue="luxury-apartment">
-            <SelectTrigger className="w-full bg-muted/50 border-input h-12 focus:ring-accent">
-              <SelectValue placeholder="Property Type" />
+          <Select>
+            <SelectTrigger className="w-full bg-muted/30 border-input h-14 text-base focus:ring-accent rounded-xl">
+              <SelectValue placeholder="All Types" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="luxury-apartment">Luxury Apartment</SelectItem>
-              <SelectItem value="premium-villa">Premium Villa</SelectItem>
-              <SelectItem value="commercial">Commercial Space</SelectItem>
-              <SelectItem value="penthouse">Penthouse</SelectItem>
+              {propertyTypes.map((type) => (
+                <SelectItem key={type.value} value={type.value}>
+                  {type.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
-        {/* Budget Input (could be select or input, user asked for Input/Select, let's use Select for structured budget) */}
+        {/* Configuration Field */}
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-1.5">
-            <IndianRupee className="w-3.5 h-3.5 text-accent" /> Budget
+          <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-accent" /> Configuration
           </label>
-          <Select defaultValue="3cr-5cr">
-            <SelectTrigger className="w-full bg-muted/50 border-input h-12 focus:ring-accent">
-              <SelectValue placeholder="Select Budget" />
+          <Select>
+            <SelectTrigger className="w-full bg-muted/30 border-input h-14 text-base focus:ring-accent rounded-xl">
+              <SelectValue placeholder="Any BHK" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="1cr-3cr">₹1.0 Cr - ₹3.0 Cr</SelectItem>
-              <SelectItem value="3cr-5cr">₹3.0 Cr - ₹5.0 Cr</SelectItem>
-              <SelectItem value="5cr-10cr">₹5.0 Cr - ₹10.0 Cr</SelectItem>
-              <SelectItem value="10cr-plus">₹10.0 Cr +</SelectItem>
+              {configurations.map((config) => (
+                <SelectItem key={config.value} value={config.value}>
+                  {config.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Budget Field */}
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+            <IndianRupee className="w-3.5 h-3.5 text-accent" /> Budget
+          </label>
+          <Select>
+            <SelectTrigger className="w-full bg-muted/30 border-input h-14 text-base focus:ring-accent rounded-xl">
+              <SelectValue placeholder="Any Budget" />
+            </SelectTrigger>
+            <SelectContent>
+              {budgets.map((budget) => (
+                <SelectItem key={budget.value} value={budget.value}>
+                  {budget.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
         {/* Submit Button */}
-        <Button 
-          type="submit" 
-          className="w-full h-14 mt-4 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-semibold group transition-all"
-        >
-          Search Properties
-          <Search className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </Button>
+        <div className="md:col-span-2 lg:col-span-1">
+          <Button 
+            type="submit" 
+            className="w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 text-base font-semibold group transition-all rounded-xl shadow-lg"
+          >
+            Search Properties
+            <Search className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
       </form>
     </div>
   );

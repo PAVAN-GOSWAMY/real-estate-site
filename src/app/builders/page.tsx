@@ -3,14 +3,20 @@ import { Metadata } from "next";
 import { builders } from "@/data/builders";
 import { BuilderCard } from "@/components/builder/BuilderCard";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Top Real Estate Builders & Developers in Noida | Propteq",
+  title: `Top Real Estate Builders & Developers in Noida | ${siteConfig.name}`,
   description: "Explore the top real estate developers and builders in Noida, Greater Noida, and Yamuna Expressway.",
+  openGraph: {
+    title: `Top Real Estate Builders & Developers in Noida | ${siteConfig.name}`,
+    description: "Explore the top real estate developers and builders in Noida, Greater Noida, and Yamuna Expressway.",
+  },
 };
 
 export default function BuildersPage() {
   return (
-    <main className="min-h-screen bg-accent/5 pb-20 pt-32">
+    <main className="min-h-screen bg-accent/5 pb-20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">

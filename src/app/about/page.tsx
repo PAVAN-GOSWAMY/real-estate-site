@@ -2,9 +2,15 @@ import Image from "next/image";
 import { properties } from "@/data/properties";
 import { developers } from "@/data/legacy";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata = {
-  title: "About Us | Propteq Real Estate",
+  title: `About Us | ${siteConfig.name}`,
   description: "Learn about our heritage of luxury real estate in Noida and Greater Noida.",
+  openGraph: {
+    title: `About Us | ${siteConfig.name}`,
+    description: "Learn about our heritage of luxury real estate in Noida and Greater Noida.",
+  },
 };
 
 export default function AboutPage() {
@@ -19,9 +25,11 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-primary/70 mix-blend-multiply" />
         </div>
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-6">
-            Redefining <span className="text-accent italic">Luxury</span>
-          </h1>
+          <div className="max-w-3xl mx-auto">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              Redefining <span className="opacity-70 italic">Luxury</span>
+            </h1>
+          </div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto font-light">
             We are the premier destination for high-end real estate in Noida, connecting discerning buyers with exceptional properties.
           </p>
@@ -35,7 +43,7 @@ export default function AboutPage() {
             <div>
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-6">Our Heritage</h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Founded with a vision to transform the luxury real estate landscape in Noida and Greater Noida, Propteq has grown into the most trusted name for premium properties. We believe that a home is more than just a place to live—it is a statement, a sanctuary, and a legacy.
+                Founded with a vision to transform the luxury real estate landscape in Noida and Greater Noida, {siteConfig.name} has grown into the most trusted name for premium properties. We believe that a home is more than just a place to live—it is a statement, a sanctuary, and a legacy.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 With exclusive partnerships with top-tier developers and an unparalleled understanding of the local market, we curate only the finest residences in the most sought-after neighborhoods.

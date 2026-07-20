@@ -30,7 +30,7 @@ export function Hero() {
     },
   };
 
-  const rightPanelVariants: Variants = {
+  const searchPanelVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
     visible: { 
       opacity: 1, 
@@ -41,7 +41,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden bg-primary">
+    <section className="relative min-h-[90vh] flex flex-col justify-center pb-8 overflow-hidden bg-primary">
       {/* Background Image using Next.js Image for optimization */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -56,17 +56,18 @@ export function Hero() {
         <div className="absolute inset-0 bg-primary/70 mix-blend-multiply" />
       </div>
 
-      <Container className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center h-full">
-        {/* Left Side: Copy & CTAs */}
+      <Container className="relative z-10 flex flex-col justify-center h-full pt-12 md:pt-20 gap-12 lg:gap-16">
+        
+        {/* Top: Copy & CTAs */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-2xl space-y-8"
+          className="max-w-3xl space-y-8"
         >
           <motion.div variants={itemVariants} className="space-y-4">
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-              Find Your Perfect Property in <span className="text-accent">Noida & Greater Noida</span>
+              Find Your Perfect Property in <span className="opacity-70">Noida & Greater Noida</span>
             </h1>
             <p className="text-lg md:text-xl text-white/85 font-light leading-relaxed max-w-xl">
               Discover verified residential and commercial projects from trusted developers across Noida, Greater Noida, Greater Noida West, Noida Extension, and the Yamuna Expressway corridor.
@@ -86,9 +87,9 @@ export function Hero() {
           </motion.div>
 
           {/* Trust Indicators */}
-          <motion.div variants={itemVariants} className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-white/10">
+          <motion.div variants={itemVariants} className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
             {trustMetrics.map((metric) => (
-              <div key={metric.id} className="flex flex-col space-y-1">
+              <div key={metric.id} className="flex flex-col space-y-1 border-l-2 border-accent/50 pl-4">
                 <span className="text-2xl md:text-3xl font-bold text-white font-heading tracking-tight">
                   {metric.value}
                 </span>
@@ -100,15 +101,16 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Side: Floating Search Panel */}
+        {/* Bottom: Full-Width Search Panel */}
         <motion.div
-          variants={rightPanelVariants}
+          variants={searchPanelVariants}
           initial="hidden"
           animate="visible"
-          className="w-full lg:block mt-8 lg:mt-0"
+          className="w-full"
         >
           <HeroSearchPanel />
         </motion.div>
+        
       </Container>
     </section>
   );

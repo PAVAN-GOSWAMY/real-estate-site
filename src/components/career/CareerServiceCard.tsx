@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Service } from "@/types/membership";
+import { Service } from "@/types/career";
 import { TrendingUp, Landmark, FileText, Map, ShieldCheck, Globe, Key, PaintRoller } from "lucide-react";
 
-interface ServiceCardProps {
+interface CareerServiceCardProps {
   service: Service;
 }
 
@@ -17,7 +17,7 @@ const iconMap: Record<string, React.ReactNode> = {
   PaintRoller: <PaintRoller className="w-6 h-6 text-primary" />,
 };
 
-export function ServiceCard({ service }: ServiceCardProps) {
+export function CareerServiceCard({ service }: CareerServiceCardProps) {
   return (
     <div className="bg-surface p-8 rounded-3xl border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
       <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">

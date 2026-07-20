@@ -5,23 +5,30 @@ export interface Service {
   icon: string;
 }
 
-export interface MembershipPlan {
+export interface Job {
   id: string;
-  name: string;
-  price: string;
-  description: string;
-  features: string[];
-  recommended?: boolean;
+  position: string;
+  openings: number;
+  location: string;
+  experience: string;
+  requirements: string;
 }
 
-export interface MembershipBenefit {
+export interface WhyJoinReason {
   id: string;
   title: string;
   description: string;
   icon: string;
 }
 
-export interface MembershipFAQ {
+export interface CareerBenefit {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface CareerFAQ {
   question: string;
   answer: string;
 }

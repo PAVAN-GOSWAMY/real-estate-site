@@ -7,9 +7,15 @@ import { BlogCategories } from "@/components/blog/BlogCategories";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { NewsletterCTA } from "@/components/blog/NewsletterCTA";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Real Estate Blog & Insights | Propteq Noida",
+  title: `Real Estate Blog & Insights | ${siteConfig.name}`,
   description: "Read expert articles, investment guides, and real estate market news focused on Noida, Greater Noida, and Yamuna Expressway.",
+  openGraph: {
+    title: `Real Estate Blog & Insights | ${siteConfig.name}`,
+    description: "Read expert articles, investment guides, and real estate market news focused on Noida, Greater Noida, and Yamuna Expressway.",
+  },
 };
 
 export default function BlogListingPage() {

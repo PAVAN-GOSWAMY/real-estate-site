@@ -5,29 +5,34 @@ import { locations } from "@/data/legacy";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Section, Container, SectionHeader, SectionTitle, SectionDescription } from "@/components/layout/wrappers";
+
+// Wrap custom typography components with motion for animation
+const MotionSectionTitle = motion.create(SectionTitle);
+const MotionSectionDescription = motion.create(SectionDescription);
 
 export function TopLocations() {
   return (
-    <section className="py-24 bg-surface">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading text-3xl md:text-5xl font-bold text-primary mb-4"
-          >
-            Premium <span className="text-accent">Locations</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg"
-          >
-            Explore luxury properties in Noida and Greater Noida&apos;s most sought-after neighborhoods.
-          </motion.p>
+    <Section className="bg-surface pt-4 md:pt-6">
+      <Container>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 gap-4">
+          <SectionHeader className="mb-0">
+            <MotionSectionTitle 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Premium Locations
+            </MotionSectionTitle>
+            <MotionSectionDescription 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              Explore luxury properties in Noida and Greater Noida&apos;s most sought-after neighborhoods.
+            </MotionSectionDescription>
+          </SectionHeader>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -68,7 +73,7 @@ export function TopLocations() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

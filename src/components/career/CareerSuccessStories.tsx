@@ -1,9 +1,10 @@
 import * as React from "react";
-import { successStories } from "@/data/membership";
+import { successStories } from "@/data/career";
+import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 
-export function MembershipSuccessStories() {
+export function CareerSuccessStories() {
   return (
     <section className="py-24 bg-surface">
       <div className="container mx-auto px-4 md:px-6">
@@ -12,7 +13,7 @@ export function MembershipSuccessStories() {
             Success Stories
           </h2>
           <p className="text-muted-foreground text-lg">
-            Hear from clients who have experienced the Propteq difference.
+            Hear from clients who have experienced the {siteConfig.name} difference.
           </p>
         </div>
 

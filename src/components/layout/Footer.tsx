@@ -1,7 +1,9 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./wrappers";
 import { footerQuickLinks, footerLocations, socialLinks } from "@/data/navigation";
+import { siteConfig } from "@/config/site";
 
 export function Footer() {
   return (
@@ -11,11 +13,18 @@ export function Footer() {
           
           {/* 1. Company Info */}
           <div className="space-y-6">
-            <h3 className="font-heading text-2xl font-bold tracking-tight text-accent">
-              PROPTEQ
-            </h3>
+            <Link href="/" className="inline-block">
+              <span className="sr-only">{siteConfig.name}</span>
+              <Image 
+                src="/logo.svg" 
+                alt={siteConfig.name} 
+                width={160} 
+                height={50} 
+                className="object-contain" 
+              />
+            </Link>
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed">
-              Curating the finest luxury real estate experiences in Noida and Greater Noida. Finding your dream sanctuary, elevated.
+              {siteConfig.description}
             </p>
           </div>
           
@@ -66,10 +75,10 @@ export function Footer() {
                 <p>123 Luxury Avenue, Sector 150</p>
                 <p>Noida, Uttar Pradesh 201310</p>
                 <p className="pt-2">
-                  <a href="mailto:info@propteq.com" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded-sm">info@propteq.com</a>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded-sm">{siteConfig.contact.email}</a>
                 </p>
                 <p>
-                  <a href="tel:+919876543210" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded-sm">+91 98765 43210</a>
+                  <a href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded-sm">{siteConfig.contact.phone}</a>
                 </p>
               </address>
               
@@ -94,7 +103,7 @@ export function Footer() {
         
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/50">
-          <p>&copy; {new Date().getFullYear()} Propteq Real Estate. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p>
             Designed for <span className="text-primary-foreground/70">Noida & Greater Noida</span>
           </p>

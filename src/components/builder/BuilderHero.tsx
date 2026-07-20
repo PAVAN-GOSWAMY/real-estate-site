@@ -11,7 +11,7 @@ export function BuilderHero({ builder }: BuilderHeroProps) {
   const totalProjects = builder.projectsCompleted + builder.projectsOngoing;
 
   return (
-    <section className="relative pt-24 pb-12 overflow-hidden bg-accent/5">
+    <section className="relative pb-12 overflow-hidden bg-accent/5">
       <div className="container px-4 md:px-6 mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
           <div className="w-full md:w-1/3 max-w-[300px] shrink-0 bg-white p-8 rounded-2xl shadow-lg border border-border/50">

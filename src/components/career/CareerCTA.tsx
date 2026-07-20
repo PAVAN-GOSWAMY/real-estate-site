@@ -2,7 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export function MembershipCTA() {
+export function CareerCTA() {
   return (
     <section className="py-24 bg-surface relative overflow-hidden">
       {/* Decorative background elements */}

@@ -8,7 +8,7 @@ export const mainNav: NavItem[] = [
   { id: "nav-home", label: "Home", href: "/" },
   { id: "nav-properties", label: "Properties", href: "/properties" },
   { id: "nav-about", label: "About", href: "/about" },
-  { id: "nav-membership", label: "Membership", href: "/membership" },
+  { id: "nav-career", label: "Career", href: "/career" },
   { id: "nav-contact", label: "Contact", href: "/contact" },
 ];
 

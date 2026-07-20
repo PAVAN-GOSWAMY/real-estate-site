@@ -22,6 +22,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${property.title} | Luxury Real Estate in ${property.location}`,
     description: property.description || `Explore ${property.title} in ${property.sector}, ${property.location}.`,
+    openGraph: {
+      title: `${property.title} | Luxury Real Estate in ${property.location}`,
+      description: property.description || `Explore ${property.title} in ${property.sector}, ${property.location}.`,
+      images: [{ url: property.thumbnail, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${property.title} | Luxury Real Estate in ${property.location}`,
+      description: property.description || `Explore ${property.title} in ${property.sector}, ${property.location}.`,
+      images: [property.thumbnail],
+    },
   };
 }
 

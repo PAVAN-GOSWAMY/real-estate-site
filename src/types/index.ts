@@ -2,7 +2,7 @@ export * from './builder';
 export * from './location';
 export * from './blog';
 export * from './contact';
-export * from './membership';
+export * from './career';
 
 export interface Property {
   id: string;

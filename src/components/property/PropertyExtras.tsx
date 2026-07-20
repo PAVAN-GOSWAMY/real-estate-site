@@ -1,5 +1,6 @@
 import { FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 export function PropertyBrochure() {
   return (
@@ -25,7 +26,7 @@ export function PropertyDisclaimer() {
   return (
     <div className="text-xs text-muted-foreground/70 leading-relaxed border-t border-border/50 pt-8 mt-12 pb-8">
       <p className="mb-2"><strong>Disclaimer:</strong> The content provided on this page, including but not limited to project details, pricing, floor plans, and amenities, is for informational purposes only. While we strive to ensure accuracy, the developer reserves the right to make modifications to the project specifications without prior notice.</p>
-      <p>Pricing mentioned is indicative and subject to change. The images shown may be artistic impressions or stock photography meant for representation purposes only. We advise buyers to verify all details independently with the developer and review the RERA registration before making any purchasing decisions. Propteq Real Estate acts solely as an advisory consultant.</p>
+      <p>Pricing mentioned is indicative and subject to change. The images shown may be artistic impressions or stock photography meant for representation purposes only. We advise buyers to verify all details independently with the developer and review the RERA registration before making any purchasing decisions. {siteConfig.name} acts solely as an advisory consultant.</p>
     </div>
   );
 }

@@ -33,7 +33,7 @@ MaxWidth.displayName = "MaxWidth";
 // ----------------------------------------------------------------------
 export const Section = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   ({ className, children, ...props }, ref) => (
-    <section ref={ref} className={cn("py-16 md:py-24", className)} {...props}>
+    <section ref={ref} className={cn("py-8 md:py-12", className)} {...props}>
       {children}
     </section>
   )
@@ -59,12 +59,30 @@ PageWrapper.displayName = "PageWrapper";
 // ----------------------------------------------------------------------
 export const SectionHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("mb-12 md:mb-16", className)} {...props}>
+    <div ref={ref} className={cn("mb-6 md:mb-8 text-left", className)} {...props}>
       {children}
     </div>
   )
 );
 SectionHeader.displayName = "SectionHeader";
+
+export const SectionTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, children, ...props }, ref) => (
+    <h2 ref={ref} className={cn("font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3", className)} {...props}>
+      {children}
+    </h2>
+  )
+);
+SectionTitle.displayName = "SectionTitle";
+
+export const SectionDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, children, ...props }, ref) => (
+    <p ref={ref} className={cn("text-muted-foreground text-lg leading-relaxed max-w-2xl", className)} {...props}>
+      {children}
+    </p>
+  )
+);
+SectionDescription.displayName = "SectionDescription";
 
 // ----------------------------------------------------------------------
 // 6. PageHeader
@@ -72,7 +90,7 @@ SectionHeader.displayName = "SectionHeader";
 // ----------------------------------------------------------------------
 export const PageHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => (
-    <div ref={ref} className={cn("bg-primary py-12 md:py-20", className)} {...props}>
+    <div ref={ref} className={cn("bg-primary py-10 md:py-16", className)} {...props}>
       <Container>
         {children}
       </Container>
@@ -80,3 +98,4 @@ export const PageHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
   )
 );
 PageHeader.displayName = "PageHeader";
+

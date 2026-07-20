@@ -38,9 +38,9 @@ export function FloatingContactWidget() {
       </div>
 
       {/* Desktop Floating Widget */}
-      <div className="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end">
+      <div className="hidden md:flex fixed bottom-8 left-8 z-50 flex-col items-start">
         <div className={cn(
-          "bg-white rounded-3xl shadow-2xl border border-border/50 p-4 mb-4 flex-col gap-3 transition-all duration-300 origin-bottom-right",
+          "bg-white rounded-3xl shadow-2xl border border-border/50 p-4 mb-4 flex-col gap-3 transition-all duration-300 origin-bottom-left",
           isOpen ? "scale-100 opacity-100 flex" : "scale-0 opacity-0 hidden"
         )}>
           <a 
@@ -76,6 +76,8 @@ export function FloatingContactWidget() {
 
         <button 
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close contact menu" : "Open contact menu"}
+          aria-expanded={isOpen}
           className={cn(
             "w-16 h-16 rounded-full flex items-center justify-center text-primary-foreground shadow-2xl transition-transform duration-300 hover:scale-110",
             isOpen ? "bg-foreground" : "bg-primary"

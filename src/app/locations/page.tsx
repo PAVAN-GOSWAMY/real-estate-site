@@ -3,14 +3,20 @@ import { Metadata } from "next";
 import { locations } from "@/data/locations";
 import { LocationCard } from "@/components/location/LocationCard";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Explore Premium Real Estate Locations in Noida | Propteq",
+  title: `Explore Premium Real Estate Locations in Noida | ${siteConfig.name}`,
   description: "Discover top residential and commercial projects across Noida, Greater Noida, and Yamuna Expressway.",
+  openGraph: {
+    title: `Explore Premium Real Estate Locations in Noida | ${siteConfig.name}`,
+    description: "Discover top residential and commercial projects across Noida, Greater Noida, and Yamuna Expressway.",
+  },
 };
 
 export default function LocationsPage() {
   return (
-    <main className="min-h-screen bg-surface pb-20 pt-32">
+    <main className="min-h-screen bg-surface pb-20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">

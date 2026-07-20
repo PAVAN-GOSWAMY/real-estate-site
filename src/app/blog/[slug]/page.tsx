@@ -78,7 +78,7 @@ export default async function BlogDetailsPage({ params }: BlogPageProps) {
     });
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen">
       <BlogBreadcrumb post={post} />
       
       <article className="container px-4 md:px-6 mx-auto py-12">

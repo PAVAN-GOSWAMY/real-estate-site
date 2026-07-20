@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -16,11 +17,15 @@ import {
 import { mainNav } from "@/data/navigation";
 import { Container } from "./wrappers";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
+import { useEnquiryModal } from "@/contexts/EnquiryModalContext";
 
 export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
+  
+  const { openModal } = useEnquiryModal();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -42,8 +47,8 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out bg-black",
         isScrolled
-          ? "border-b border-white/10 shadow-sm py-4"
-          : "py-6"
+          ? "border-b border-white/10 shadow-sm py-2 md:py-3"
+          : "py-3 md:py-4"
       )}
     >
       <Container className="flex items-center justify-between h-auto">
@@ -52,9 +57,15 @@ export function Navbar() {
           className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
           aria-label="Home"
         >
-          <span className="font-heading text-2xl font-bold tracking-tight transition-colors duration-300 text-white">
-            PROPTEQ
-          </span>
+          <span className="sr-only">{siteConfig.name}</span>
+          <Image 
+            src="/logo.svg" 
+            alt={siteConfig.name} 
+            width={140} 
+            height={40} 
+            className="object-contain h-8 md:h-10 w-auto" 
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -67,7 +78,7 @@ export function Navbar() {
                 href={link.href}
                 prefetch={false}
                 className={cn(
-                  "relative text-sm font-medium transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm px-1 py-0.5",
+                  "relative text-sm font-medium transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm px-1 py-1 flex items-center",
                   isActive ? "text-white font-bold" : "text-white/70"
                 )}
                 aria-current={isActive ? "page" : undefined}
@@ -85,7 +96,10 @@ export function Navbar() {
             );
           })}
           
-          <Button className="transition-all duration-300 bg-white text-primary hover:bg-white/90 font-bold">
+          <Button 
+            onClick={() => openModal("Navbar Desktop")}
+            className="h-10 px-6 transition-all duration-300 bg-white text-primary hover:bg-white/90 font-bold"
+          >
             Enquire Now
           </Button>
         </nav>
@@ -105,8 +119,15 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[350px]">
               <SheetHeader className="mb-8">
-                <SheetTitle className="text-left font-heading text-2xl font-bold text-primary">
-                  PROPTEQ
+                <SheetTitle className="text-left">
+                  <span className="sr-only">{siteConfig.name}</span>
+                  <Image 
+                    src="/logo.svg" 
+                    alt={siteConfig.name} 
+                    width={140} 
+                    height={40} 
+                    className="object-contain" 
+                  />
                 </SheetTitle>
               </SheetHeader>
               
@@ -132,7 +153,14 @@ export function Navbar() {
               </nav>
               
               <div className="mt-8 pt-8 border-t border-border">
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">
+                <Button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    openModal("Navbar Mobile");
+                  }}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90" 
+                  size="lg"
+                >
                   Enquire Now
                 </Button>
               </div>

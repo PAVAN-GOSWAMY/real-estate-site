@@ -3,6 +3,8 @@ import { Inter, Playfair_Display, Geist } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContactWidget } from "@/components/contact/FloatingContactWidget";
+import { EnquiryModalProvider } from "@/contexts/EnquiryModalContext";
+import { EnquiryModal } from "@/components/common/EnquiryModal";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -18,10 +20,28 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://propteq.com"),
-  title: "Propteq | Premium Real Estate in Noida & NCR",
-  description: "Find your dream luxury home or investment property with Propteq Real Estate.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | Premium Real Estate in Noida & NCR`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({
@@ -32,15 +52,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", inter.variable, playfair.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", inter.variable, playfair.variable, "font-sans", geist.variable, "scroll-pt-16 md:scroll-pt-[72px]")}
     >
       <body className="min-h-full flex flex-col bg-background">
-        <Navbar />
-        <main className="flex-1">
-          {children}
-          <FloatingContactWidget />
-        </main>
-        <Footer />
+        <EnquiryModalProvider>
+          <Navbar />
+          <main className="flex-1 pt-16 md:pt-[72px]">
+            {children}
+            <FloatingContactWidget />
+          </main>
+          <Footer />
+          <EnquiryModal />
+        </EnquiryModalProvider>
       </body>
     </html>
   );

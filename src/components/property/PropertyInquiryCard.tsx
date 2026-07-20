@@ -25,51 +25,61 @@ export function PropertyInquiryCard({ title, price }: PropertyInquiryCardProps) 
   };
 
   return (
-    <div className="sticky top-24 bg-surface rounded-2xl p-6 border border-border/50 shadow-lg max-h-[calc(100vh-8rem)] overflow-y-auto z-10">
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold text-accent uppercase tracking-wider mb-1">Interested in</h3>
-        <p className="font-heading text-xl font-bold text-foreground mb-1">{title}</p>
-        <p className="text-2xl font-bold text-primary">{price}</p>
+    <div className="sticky top-24 bg-surface rounded-2xl p-4 border border-border/50 shadow-lg z-10 flex flex-col">
+      <div className="mb-3">
+        <h3 className="font-heading text-lg font-bold text-primary mb-0.5">Enquire Now</h3>
+        <p className="text-[11px] text-muted-foreground leading-tight">Our property consultant will contact you shortly.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="name">Full Name</Label>
-          <Input id="name" placeholder="John Doe" required className="bg-background" />
+      <form onSubmit={handleSubmit} className="space-y-2.5">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="space-y-1">
+            <Label htmlFor="name" className="text-[11px]">Full Name</Label>
+            <Input id="name" placeholder="John Doe" required className="bg-background h-9 text-xs" />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="phone" className="text-[11px]">Phone</Label>
+            <Input id="phone" type="tel" placeholder="+91..." required className="bg-background h-9 text-xs" />
+          </div>
         </div>
         
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" type="tel" placeholder="+91 98765 43210" required className="bg-background" />
+        <div className="space-y-1">
+          <Label htmlFor="email" className="text-[11px]">Email Address</Label>
+          <Input id="email" type="email" placeholder="john@example.com" required className="bg-background h-9 text-xs" />
         </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="email">Email Address</Label>
-          <Input id="email" type="email" placeholder="john@example.com" required className="bg-background" />
+
+        <div className="space-y-1">
+          <Label htmlFor="message" className="text-[11px]">Message</Label>
+          <textarea 
+            id="message" 
+            rows={2}
+            className="flex w-full rounded-md border border-input bg-background px-3 py-1.5 text-xs shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none min-h-[48px] max-h-[60px]" 
+            placeholder="I'm interested..." 
+          />
         </div>
         
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-lg font-semibold"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 text-sm font-semibold mt-1"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Enquire Now"}
         </Button>
       </form>
 
-      <div className="mt-6 flex flex-col gap-3">
-        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+      <div className="mt-3 flex flex-col gap-2">
+        <div className="flex items-center justify-center gap-2 text-[9px] text-muted-foreground">
           <span className="h-[1px] w-full bg-border"></span>
-          <span className="shrink-0 uppercase tracking-widest text-xs">Or</span>
+          <span className="shrink-0 uppercase tracking-widest">Or</span>
           <span className="h-[1px] w-full bg-border"></span>
         </div>
         
-        <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground h-11">
-          <Calendar className="mr-2 h-4 w-4" /> Schedule Site Visit
+        <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground h-9 text-xs">
+          <Calendar className="mr-2 h-3.5 w-3.5" /> Schedule Site Visit
         </Button>
         
-        <a href="tel:+919876543210" className="flex items-center justify-center gap-2 text-primary font-medium hover:text-accent transition-colors py-2">
-          <PhoneCall className="h-4 w-4" /> +91 98765 43210
+        <a href="tel:+919876543210" className="flex items-center justify-center gap-1.5 text-primary text-xs font-medium hover:text-accent transition-colors pt-0.5">
+          <PhoneCall className="h-3 w-3" /> +91 98765 43210
         </a>
       </div>
     </div>
